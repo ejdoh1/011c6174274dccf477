@@ -5,12 +5,11 @@ CENTOS_CHECKSUM="centos-checksum"
 OUTFILE="centos-latest.json"
 TEMPLATE_FILENAME="template-centos.json"
 
-# curl -s http://centos.mirror.digitalpacific.com.au/ > $CENTOS_HTML
+curl -s http://centos.mirror.digitalpacific.com.au/ > $CENTOS_HTML
 
-# version=$(cat $CENTOS_HTML | tr -s ' ' | grep " -" | cut -d'"' -f2 | grep ^[0-9] | tail -n1 | cut -d'/' -f1)
-# echo $version
+version=$(cat $CENTOS_HTML | tr -s ' ' | grep " -" | cut -d'"' -f2 | grep ^[0-9] | tail -n1 | cut -d'/' -f1)
 
-# curl -s http://centos.mirror.digitalpacific.com.au/${version}/isos/x86_64/CHECKSUM > $CENTOS_CHECKSUM
+curl -s http://centos.mirror.digitalpacific.com.au/${version}/isos/x86_64/CHECKSUM > $CENTOS_CHECKSUM
 
 line=$(cat $CENTOS_CHECKSUM | grep dvd | grep -i sha256)
 
